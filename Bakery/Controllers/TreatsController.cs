@@ -36,70 +36,74 @@ namespace Bakery.Controllers
     [HttpPost]
     public async Task<ActionResult> Create(Treat treat, int FlavourId)
     {
-      _db.Machines.Add(machine);
+      var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      var currentUser = await _userManager.FindByIdAsync(userId);
+      treat.User = currentUser;
+      _db.Treats.Add(treat);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
+    [AllowAnonymous]
     public ActionResult Details(int id)
     {
-      Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
-      return View(thisMachine);
+      var thisTreat = _db.Treats
+      .Include(treat => treat.JoinEntities)
+      .ThenInclude(join => join.Flavour)
+      .FirstOrDefault(treat => treat.TreatsId == id);
+      return View(thisTreat);
     }
-
     public ActionResult Edit(int id)
     {
-      var thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
-      ViewBag.EnginnerId = new SelectList(_db.Machines, "EnginnerId", "Name");
-      return View(thisMachine);
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatsId == id);
+      return View(thisTreat);
     }
 
     [HttpPost]
-    public ActionResult Edit(Machine machine)
+    public ActionResult Edit(Treat treat)
     {
-      _db.Entry(machine).State = EntityState.Modified;
+      _db.Entry(treat).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Delete(int id)
     {
-      var thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
-      return View(thisMachine);
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatsId == id);
+      return View(thisTreat);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      var thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
-      _db.Machines.Remove(thisMachine);
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatsId == id);
+      _db.Treats.Remove(thisTreat);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
-      public ActionResult AddEngineer(int id)
+      public ActionResult AddFlavour(int id)
     {
-      var thisMachine = _db.Machines.FirstOrDefault(machines => machines.MachineId == id);
-      ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
-      return View(thisMachine);
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatsId == id);
+      ViewBag.FlavourId = new SelectList(_db.Flavours, "FlavourId", "Name");
+      return View(thisTreat);
     }
 
     [HttpPost]
-    public ActionResult AddEngineer(Machine machine, int EngineerId)
+    public ActionResult AddFlavour(Treat treat, int FlavourId)
     {
-      if(EngineerId != 0)
+      if(FlavourId != 0)
       {
-         _db.EngineerMachine.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId});
+         _db.FlavourTreat.Add(new FlavourTreat() { FlavourId = FlavourId, TreatsId = treat.TreatsId});
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
      [HttpPost]
-    public ActionResult DeleteEnginner(int joinId)
+    public ActionResult DeleteFlavour(int joinId)
     {
-      var joinEntry = _db.EngineerMachine.FirstOrDefault(entry => entry.EngineerMachineId == joinId);
-      _db.EngineerMachine.Remove(joinEntry);
+      var joinEntry = _db.FlavourTreat.FirstOrDefault(entry => entry.FlavourTreatId == joinId);
+      _db.FlavourTreat.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
