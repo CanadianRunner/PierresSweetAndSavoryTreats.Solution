@@ -11,29 +11,30 @@ using System.Security.Claims;
 
 namespace Bakery.Controllers
 {
-  public class MachinesController : Controller
+  public class TreatsController : Controller
   {
-    private readonly FactoryContext _db;
+    private readonly BakeryContext _db;
+    private readonly UserIdTracker<UserId> _userIdTracker;
 
-    public MachinesController(FactoryContext db)
+    public TreatsController(UserIdTracker<UserId> UserIdTracker, BakeryContext db)
     {
+      _userIdTracker = userIdTracker;
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
-      List<Machine> model = _db.Machines.ToList();
-      return View(model);
+      return View(_db.Treats.ToList());
     }
 
-       public ActionResult Create()
+    public ActionResult Create()
     {
-      ViewBag.EnginnerId = new SelectList(_db.Machines, "EnginnerId", "Name");
       return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Machine machine)
+    public async Task<ActionResult> Create(Treat treat, int FlavourId)
     {
       _db.Machines.Add(machine);
       _db.SaveChanges();
