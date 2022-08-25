@@ -32,7 +32,7 @@ namespace Bakery.Controllers
     [HttpPost]
     public async Task<ActionResult> Register(RegisterViewModel model)
     {
-      var appUser = new UserId { UserName = model.Email}
+      var appUser = new UserId { UserName = model.Email};
       IdentityResult result = await _userIdTracker.CreateAsync(user, model.Password);
       if (result.Succeeded)
       {

@@ -13,6 +13,6 @@ namespace Bakery.Models
     public string Name { get; set; }
     public string Description { get; set; }
     public virtual UserId User { get; set; }
-    public virtual ICollection<EngineerMachine> JoinEntities { get; set; }
+    public virtual ICollection<FlavourTreat> JoinEntities { get; set; }
   }
 }
