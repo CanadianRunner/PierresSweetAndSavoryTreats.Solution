@@ -1,0 +1,46 @@
+.home__header-content {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    font-size: 24px;
+}
+
+.home__links {
+    display: flex;
+    align-items: baseline;
+    list-style: none;
+    gap: 20px;
+    font-size: 15px;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+.home__img {
+    width: 500px;
+    height: 310px;
+    filter: brightness(50%);
+    object-fit: cover;
+}
+
+.home__layout {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px ;
+}
+
+.dark-gray {
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.home__buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.home__background > h1 {
+    display: flex;
+    justify-content: center;
+}
