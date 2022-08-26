@@ -28,7 +28,7 @@ _This is a project I created at Epicodus that allows Pierre's Bakery to track tr
 4) Create a new file within the Factory directory.  Use the command `touch appsettings.json`
 5) Please copy the text in the image below and enter your own entry points (Enter your database, userId, and password within appsettings.json).
 
-![Settings](..img/ExamplSettings.png)
+![Settings](Bakery\wwwroot\img\ExampleSettings.png)
 
 6) Open the directory and `cd to Factory`.
 7) To build the Factory enter: `dotnet build`.
@@ -37,12 +37,12 @@ _This is a project I created at Epicodus that allows Pierre's Bakery to track tr
 
 ## For a visual representation of setup and a successfully built application, please consult the attached Gifs.
 
-![Setup](buildingapp.gif)
+![Setup](Bakery\wwwroot\img\BakerySetup.gif)
 
-![BuiltApp](WorkingApplication.gif)
+![BuiltApp](Bakery\wwwroot\img\FunctioningApp.gif)
 
 ## Project can be found at:
-https://github.com/CanadianRunner/SillystringzsFactory.Solution.git
+https://github.com/CanadianRunner/PierresSweetAndSavoryTreats.Solution.git
 
 ## Known Bugs
 
@@ -51,11 +51,11 @@ https://github.com/CanadianRunner/SillystringzsFactory.Solution.git
 
 ## License
 
-If you have any questions or concerns feel free to contact me at code@sean-keane.com\
+If you have any questions or concerns feel free to contact me at code@sean-keane.com
 
-Custom button CSS was created by Steven Lei https://getcssscan.com/css-buttons-examples 
+Custom button CSS was created by Squareshot https://getcssscan.com/css-buttons-examples 
 
 *This is licensed under the MIT license*
 
-Copyright (c) 8-12-2022 **_Sean Keane_**
+Copyright (c) 8-26-2022 **_Sean Keane_**
 
