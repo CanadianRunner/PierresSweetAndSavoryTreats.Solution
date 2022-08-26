@@ -39,7 +39,7 @@ _This is a project I created at Epicodus that allows Pierre's Bakery to track tr
 
 ![Setup](BakerySetup.gif)
 
-![BuiltApp](WorkingApplication.gif)
+![BuiltApp](FunctioningApp.gif)
 
 ## Project can be found at:
 https://github.com/CanadianRunner/PierresSweetAndSavoryTreats.Solution.git
