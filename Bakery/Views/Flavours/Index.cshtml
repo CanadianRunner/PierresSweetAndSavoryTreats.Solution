@@ -2,21 +2,23 @@
   Layout = "_Layout";
 }
 
-@using ToDoList.Models;
+@using Bakery.Models;
+@model List<Bakery.Models.Flavour>
 
-<h1>Categories</h1>
+<h3>Pierre's Flavour Profiles</h3>
+<h5>Please click the add flavour button to add a flavour to your profile.</h5>
 
 @if (@Model.Count == 0)
 {
-  <h3>No categories have been added yet!</h3>
+  <h3>Oops! There are no saved flavour profiles.  Please add a Flavour with the button below.</h3>
 } 
 
 <ul>
-  @foreach(Category category in Model)
+  @foreach(Flavour flavour in Model)
   {
-    <li>@Html.ActionLink($"{category.Name}", "Details", new { id = category.CategoryId })</li>
+    <li>@Html.ActionLink($"{flavour.Name}", "Details", new { id = flavour.FlavourId })</li>
   }
 </ul>
 
-<p>@Html.ActionLink("Add new category", "Create")</p>
+<p>@Html.ActionLink("Add Flavour", "Create")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
