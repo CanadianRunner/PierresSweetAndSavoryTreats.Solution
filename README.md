@@ -28,7 +28,7 @@ _This is a project I created at Epicodus that allows Pierre's Bakery to track tr
 4) Create a new file within the Factory directory.  Use the command `touch appsettings.json`
 5) Please copy the text in the image below and enter your own entry points (Enter your database, userId, and password within appsettings.json).
 
-![Settings](/img/ExampleSettings.png)
+![Settings](ExampleSettings.png)
 
 6) Open the directory and `cd to Factory`.
 7) To build the Factory enter: `dotnet build`.
@@ -37,9 +37,9 @@ _This is a project I created at Epicodus that allows Pierre's Bakery to track tr
 
 ## For a visual representation of setup and a successfully built application, please consult the attached Gifs.
 
-![Setup](../BakerySetup.gif)
+![Setup](BakerySetup.gif)
 
-![BuiltApp](../WorkingApplication.gif)
+![BuiltApp](WorkingApplication.gif)
 
 ## Project can be found at:
 https://github.com/CanadianRunner/PierresSweetAndSavoryTreats.Solution.git
