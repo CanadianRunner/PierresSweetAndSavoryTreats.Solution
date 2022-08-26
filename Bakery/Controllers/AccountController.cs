@@ -10,12 +10,12 @@ namespace Bakery.Controllers
   {
     private readonly BakeryContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
-    private readonly UserSignIn<ApplicationUser> _userSignIn;
+    private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public AccountController(UserManager<ApplicationUser> userManager, UserSignIn<ApplicationUser> userSignIn, BakeryContext db)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, BakeryContext db)
     {
       _userManager = userManager;
-      _userSignIn = userSignIn;
+      _signInManager = signInManager;
       _db = db;
     }
 
@@ -32,7 +32,7 @@ namespace Bakery.Controllers
     [HttpPost]
     public async Task<ActionResult> Register(RegisterViewModel model)
     {
-      var appUser = new ApplicationUser { UserName = model.Email};
+      var user = new ApplicationUser { UserName = model.Email};
       IdentityResult result = await _userManager.CreateAsync(user, model.Password);
       if (result.Succeeded)
       {

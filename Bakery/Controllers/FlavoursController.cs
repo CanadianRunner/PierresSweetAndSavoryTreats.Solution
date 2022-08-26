@@ -76,14 +76,14 @@ namespace Bakery.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
       var thisFlavour = _db.Flavours.FirstOrDefault(flavour => flavour.FlavourId == id);
-      _db.Treats.Remove(thisFlavour);
+      _db.Flavours.Remove(thisFlavour);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
       public ActionResult AddTreat(int id)
     {
-      var thisFlavour = _db.Treats.FirstOrDefault(flavour => flavour.FlavourId == id);
+      var thisFlavour = _db.Flavours.FirstOrDefault(flavour => flavour.FlavourId == id);
       ViewBag.TreatId = new SelectList(_db.Treats, "TreatsId", "Name");
       return View(thisFlavour);
     }
@@ -93,7 +93,7 @@ namespace Bakery.Controllers
     {
       if(TreatsId != 0)
       {
-         _db.FlavourTreat.Add(new FlavourTreat() { TreatsId = TreatsId, FlavourId = flavourId});
+         _db.FlavourTreat.Add(new FlavourTreat() { TreatsId = TreatsId, FlavourId = flavour.FlavourId});
       }
       _db.SaveChanges();
       return RedirectToAction("Index");

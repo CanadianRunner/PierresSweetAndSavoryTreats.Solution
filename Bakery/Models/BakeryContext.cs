@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Bakery.Models
 {
-  public class BakeryContext : IdentityDbContext<UserId>
+  public class BakeryContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Flavour> Flavours { get; set; }
     public DbSet<Treat> Treats { get; set; }
