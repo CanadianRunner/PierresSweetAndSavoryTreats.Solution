@@ -5,10 +5,10 @@ using System.IO;
 
 namespace Bakery.Models
 {
-  public class BakeryContextFactory : IDesignTimeDbContextBakery<BakeryContext>
+  public class BakeryContextFactory : IDesignTimeDbContextFactory<BakeryContext>
   {
 
-    BakeryContext IDesignTimeDbContextBakery<BakeryContext>.CreateDbContext(string[] args)
+    BakeryContext IDesignTimeDbContextFactory<BakeryContext>.CreateDbContext(string[] args)
     {
       IConfigurationRoot configuration = new ConfigurationBuilder()
           .SetBasePath(Directory.GetCurrentDirectory())

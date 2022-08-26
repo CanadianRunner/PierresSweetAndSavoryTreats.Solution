@@ -12,7 +12,7 @@ namespace Bakery.Controllers
     private readonly UserIdTracker<UserId> _userIdTracker;
     private readonly UserSignIn<UserId> _userSignIn;
 
-    public AccountController(UserIdTracker<UserId> UserIdTracker, UserSignIn<UserId> userSignIn, BakeryContext db)
+    public AccountController(UserIdTracker<UserId> userIdTracker, UserSignIn<UserId> userSignIn, BakeryContext db)
     {
       _userIdTracker = userIdTracker;
       _userSignIn = userSignIn;
