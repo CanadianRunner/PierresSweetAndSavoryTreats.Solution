@@ -25,14 +25,14 @@ _This is a project I created at Epicodus that allows Pierre's Bakery to track tr
 1) Clone this repository to your desktop.
 2) Navigate to the now installed directory and open in your editor of choice.
 3) Create your own database using the data from `Sean_Keane_Bakery.sql`.  Import this data into your MySQL workbench.
-4) Create a new file within the Factory directory.  Use the command `touch appsettings.json`
+4) Create a new file within the Bakery directory.  Use the command `touch appsettings.json`
 5) Please copy the text in the image below and enter your own entry points (Enter your database, userId, and password within appsettings.json).
 
 ![Settings](ExampleSettings.png)
 
-6) Open the directory and `cd to Factory`.
-7) To build the Factory enter: `dotnet build`.
-8) To run the Factory enter: `dotnet run`.
+6) Open the directory and `cd to Bakery`.
+7) To build the Bakery enter: `dotnet build`.
+8) To run the Bakery enter: `dotnet run`.
 9) Open your browser of choice and use the url: http://localhost:5000/
 
 ## For a visual representation of setup and a successfully built application, please consult the attached Gifs.
