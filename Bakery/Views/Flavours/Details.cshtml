@@ -4,7 +4,6 @@
 
 @model Bakery.Models.Flavour
 
-<div class="container">
   <h4>Flavour Details: @Html.DisplayFor(model => model.Name)</h4>
   <h3>Flavour Description: @Html.DisplayFor(model => model.Description)</h3>
   <hr/>
@@ -35,4 +34,3 @@
   <button>@Html.ActionLink("Edit Flavour", "Edit", new { id = Model.FlavourId})</button>
   <button>@Html.ActionLink("Delete Flavour", "Delete", new { id = Model.FlavourId})</button>
   <button>@Html.ActionLink("Back to Flavours", "Index")</button>
-</div>

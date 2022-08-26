@@ -2,25 +2,21 @@
   Layout = "_Layout";
 }
 
-@using ToDoList.Models;
-@model IEnumerable<ToDoList.Models.Item>
+@using Bakery.Models;
+@model List<Bakery.Models.Treat>
 
-<h1>Items for @User.Identity.Name</h1>
+<h1>Treats for: @User.Identity.Name</h1>
 
-@if (Model.Any())
+@if(Model.Count != 0)
 {
-  <ul>
-    @foreach (Item item in Model)
-    {
-      <li>@Html.ActionLink($"{item.Description}", "Details", new { id = item.ItemId })</li>
-    }
-  </ul>
-} 
-else
-{
-  <h3>No items have been added yet!</h3>
+  @foreach(Treat treat in Model)
+  {
+    <li>@Html.ActionLink($"{treat.Name}", "Details", new {id = treat.TreatId})</li>
+  }
 }
-
-<p>@Html.ActionLink("Add new item", "Create")</p>
-
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+else 
+{
+  <p>No treats have been added yet.</p>
+}
+  <button>@Html.ActionLink("Add a Treat", "Create")</button>
+ 
