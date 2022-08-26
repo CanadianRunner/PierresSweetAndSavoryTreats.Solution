@@ -9,12 +9,12 @@ namespace Bakery.Controllers
   public class AccountController : Controller
   {
     private readonly BakeryContext _db;
-    private readonly UserIdTracker<UserId> _userIdTracker;
-    private readonly UserSignIn<UserId> _userSignIn;
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly UserSignIn<ApplicationUser> _userSignIn;
 
-    public AccountController(UserIdTracker<UserId> userIdTracker, UserSignIn<UserId> userSignIn, BakeryContext db)
+    public AccountController(UserManager<ApplicationUser> userManager, UserSignIn<ApplicationUser> userSignIn, BakeryContext db)
     {
-      _userIdTracker = userIdTracker;
+      _userManager = userManager;
       _userSignIn = userSignIn;
       _db = db;
     }
@@ -32,8 +32,8 @@ namespace Bakery.Controllers
     [HttpPost]
     public async Task<ActionResult> Register(RegisterViewModel model)
     {
-      var appUser = new UserId { UserName = model.Email};
-      IdentityResult result = await _userIdTracker.CreateAsync(user, model.Password);
+      var appUser = new ApplicationUser { UserName = model.Email};
+      IdentityResult result = await _userManager.CreateAsync(user, model.Password);
       if (result.Succeeded)
       {
         return RedirectToAction("Index");

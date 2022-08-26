@@ -14,11 +14,11 @@ namespace Bakery.Controllers
   public class TreatsController : Controller
   {
     private readonly BakeryContext _db;
-    private readonly UserIdTracker<UserId> _userIdTracker;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public TreatsController(UserIdTracker<UserId> UserIdTracker, BakeryContext db)
+    public TreatsController(UserManager<ApplicationUser> UserManager, BakeryContext db)
     {
-      _userIdTracker = userIdTracker;
+      _userManager = userManager;
       _db = db;
     }
 
