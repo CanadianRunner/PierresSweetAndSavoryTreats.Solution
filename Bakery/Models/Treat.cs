@@ -8,8 +8,8 @@ namespace Bakery.Models
     {
       this.JoinEntities = new HashSet<FlavourTreat>();
     }
-
-    public int TreatsId { get; set; }
+   
+    public int TreatId { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public virtual ApplicationUser User { get; set; }

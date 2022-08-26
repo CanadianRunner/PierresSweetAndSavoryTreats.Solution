@@ -49,12 +49,12 @@ namespace Bakery.Controllers
       var thisTreat = _db.Treats
       .Include(treat => treat.JoinEntities)
       .ThenInclude(join => join.Flavour)
-      .FirstOrDefault(treat => treat.TreatsId == id);
+      .FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
     public ActionResult Edit(int id)
     {
-      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatsId == id);
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
 
@@ -68,14 +68,14 @@ namespace Bakery.Controllers
 
     public ActionResult Delete(int id)
     {
-      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatsId == id);
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatsId == id);
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       _db.Treats.Remove(thisTreat);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -83,7 +83,7 @@ namespace Bakery.Controllers
 
       public ActionResult AddFlavour(int id)
     {
-      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatsId == id);
+      var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       ViewBag.FlavourId = new SelectList(_db.Flavours, "FlavourId", "Name");
       return View(thisTreat);
     }
@@ -93,7 +93,7 @@ namespace Bakery.Controllers
     {
       if(FlavourId != 0)
       {
-         _db.FlavourTreat.Add(new FlavourTreat() { FlavourId = FlavourId, TreatsId = treat.TreatsId});
+         _db.FlavourTreat.Add(new FlavourTreat() { FlavourId = FlavourId, TreatId = treat.TreatId});
       }
       _db.SaveChanges();
       return RedirectToAction("Index");
