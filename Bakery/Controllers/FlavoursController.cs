@@ -34,6 +34,7 @@ namespace Bakery.Controllers
       return View();
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult> Create(Flavour flavour)
     {
@@ -70,12 +71,14 @@ namespace Bakery.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize]
     public ActionResult Delete(int id)
     {
       var thisFlavour = _db.Flavours.FirstOrDefault(flavour => flavour.FlavourId == id);
       return View(thisFlavour);
     }
-
+    
+    [Authorize]
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
@@ -85,13 +88,15 @@ namespace Bakery.Controllers
       return RedirectToAction("Index");
     }
 
-      public ActionResult AddTreat(int id)
+    [Authorize]
+    public ActionResult AddTreat(int id)
     {
       var thisFlavour = _db.Flavours.FirstOrDefault(flavour => flavour.FlavourId == id);
       ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
       return View(thisFlavour);
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult AddTreat(Flavour flavour, int TreatId)
     {
@@ -103,6 +108,7 @@ namespace Bakery.Controllers
       return RedirectToAction("Index");
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult DeleteFlavour(int joinId)
     {
