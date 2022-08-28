@@ -102,7 +102,7 @@ namespace Bakery.Controllers
     {
       if(TreatId != 0)
       {
-         _db.FlavourTreat.Add(new FlavourTreat() { TreatId = TreatId, FlavourId = flavour.FlavourId});
+      _db.FlavourTreat.Add(new FlavourTreat() { TreatId = TreatId, FlavourId = flavour.FlavourId});
       }
       _db.SaveChanges();
       return RedirectToAction("Index");

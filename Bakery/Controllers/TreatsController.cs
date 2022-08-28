@@ -88,8 +88,9 @@ namespace Bakery.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-      [Authorize]
-      public ActionResult AddFlavour(int id)
+    
+    [Authorize]
+    public ActionResult AddFlavour(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       ViewBag.FlavourId = new SelectList(_db.Flavours, "FlavourId", "Name");
