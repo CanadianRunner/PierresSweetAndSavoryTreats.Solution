@@ -2,7 +2,7 @@
 
 #### By _**Sean Keane**_
 
-#### Pierre's Sweet & Savory Treats - Epicodus Code Review 8/12/2022
+#### Pierre's Sweet & Savory Treats - Epicodus Code Review 8/26/2022
 
 ## Technologies Used
 
