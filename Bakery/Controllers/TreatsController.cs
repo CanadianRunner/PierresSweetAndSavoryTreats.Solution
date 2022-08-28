@@ -27,7 +27,8 @@ namespace Bakery.Controllers
     {
       return View(_db.Treats.ToList());
     }
-
+    
+    [Authorize]
     public ActionResult Create()
     {
       return View();
@@ -43,6 +44,7 @@ namespace Bakery.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
     [AllowAnonymous]
     public ActionResult Details(int id)
     {
@@ -52,12 +54,15 @@ namespace Bakery.Controllers
       .FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
+
+    [Authorize]
     public ActionResult Edit(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
 
+    [Authorize]
     [HttpPost]
     public ActionResult Edit(Treat treat)
     {
@@ -99,7 +104,7 @@ namespace Bakery.Controllers
       return RedirectToAction("Index");
     }
 
-     [HttpPost]
+    [HttpPost]
     public ActionResult DeleteFlavour(int joinId)
     {
       var joinEntry = _db.FlavourTreat.FirstOrDefault(entry => entry.FlavourTreatId == joinId);
